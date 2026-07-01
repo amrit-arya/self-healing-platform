@@ -1,0 +1,15 @@
+INFO Application Started
+
+INFO Database Connected
+
+WARNING Memory Usage High
+
+ERROR Database Connection Lost
+
+INFO Retrying Connection
+
+ERROR Authentication Failed
+
+WARNING Disk Usage High
+
+INFO Service Recovered

@@ -1,9 +1,17 @@
-log_file = "../logs/application.log"
+from pathlib import Path
+# Get project root
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+# Path to log file
+LOG_FILE = PROJECT_ROOT / "logs" / "application.log"
+
+# Path to report file
+REPORT_FILE = PROJECT_ROOT / "reports" / "log_report.txt"
 
 errors = []
 warnings = []
 
-with open(log_file, "r") as file:
+with open(LOG_FILE, "r") as file:
 
     for line in file:
 
@@ -26,9 +34,7 @@ for warning in warnings:
 print(f"\nTotal Errors: {len(errors)}")
 print(f"Total Warnings: {len(warnings)}")
 
-report_file = "../reports/log_report.txt"
-
-with open(report_file, "w") as report:
+with open(REPORT_FILE, "w") as report:
 
     report.write(f"Errors: {len(errors)}\n")
     report.write(f"Warnings: {len(warnings)}\n")

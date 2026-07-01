@@ -1,5 +1,16 @@
 import subprocess
 from datetime import datetime
+from alerts.alert_manager import send_alert
+from pathlib import Path
+
+# Path to the project root
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+# Path to reports directory
+REPORTS_DIR = PROJECT_ROOT / "reports"
+
+# Path to incidents file
+INCIDENTS_FILE = REPORTS_DIR / "incidents.txt"
 
 # Containers that must always be running
 REQUIRED_CONTAINERS = [
@@ -55,7 +66,7 @@ for container in REQUIRED_CONTAINERS:
             print(f"Recovery Status: SUCCESS")
 
             # Create incident report
-            with open("../reports/incidents.txt", "a") as report:
+            with open(INCIDENTS_FILE, "a") as report:
 
                 report.write(
                     f"{datetime.now()} | "
@@ -63,13 +74,21 @@ for container in REQUIRED_CONTAINERS:
                     f"Recovered automatically\n"
                 )
 
-            print("Incident report updated.")
+            send_alert(
+    container,
+    "Container recovered successfully",
+    "INFO"
+)
 
         else:
 
-            print(f"Recovery Status: FAILED")
+            send_alert(
+    container,
+    "Automatic recovery failed",
+    "CRITICAL"
+)
 
-            with open("../reports/incidents.txt", "a") as report:
+            with open(INCIDENTS_FILE, "a") as report:
 
                 report.write(
                     f"{datetime.now()} | "
