@@ -1,7 +1,7 @@
 import subprocess
 import time
 
-CHECK_INTERVAL = 30
+from src.config.settings import CHECK_INTERVAL
 
 print("Starting Self-Healing Monitor...")
 

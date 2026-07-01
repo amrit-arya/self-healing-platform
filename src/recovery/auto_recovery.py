@@ -10,11 +10,7 @@ REPORT_FILE = REPORTS_DIR / "log_report.txt"
 
 
 # Containers that must always be running
-REQUIRED_CONTAINERS = [
-    "nginx-demo",
-    "flask-demo",
-    "redis-demo"
-]
+from src.config.settings import REQUIRED_CONTAINERS
 
 print("\n========== SELF HEALING ENGINE ==========\n")
 
