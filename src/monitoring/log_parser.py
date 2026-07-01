@@ -1,12 +1,8 @@
 from pathlib import Path
-# Get project root
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+from src.config.paths import LOGS_DIR, REPORTS_DIR
 
-# Path to log file
-LOG_FILE = PROJECT_ROOT / "logs" / "application.log"
-
-# Path to report file
-REPORT_FILE = PROJECT_ROOT / "reports" / "log_report.txt"
+LOG_FILE = LOGS_DIR / "application.log"
+REPORT_FILE = REPORTS_DIR / "log_report.txt"
 
 errors = []
 warnings = []

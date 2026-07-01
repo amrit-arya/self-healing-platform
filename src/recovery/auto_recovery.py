@@ -3,14 +3,11 @@ from datetime import datetime
 from alerts.alert_manager import send_alert
 from pathlib import Path
 
-# Path to the project root
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+from src.config.paths import LOGS_DIR, REPORTS_DIR
 
-# Path to reports directory
-REPORTS_DIR = PROJECT_ROOT / "reports"
+LOG_FILE = LOGS_DIR / "application.log"
+REPORT_FILE = REPORTS_DIR / "log_report.txt"
 
-# Path to incidents file
-INCIDENTS_FILE = REPORTS_DIR / "incidents.txt"
 
 # Containers that must always be running
 REQUIRED_CONTAINERS = [
